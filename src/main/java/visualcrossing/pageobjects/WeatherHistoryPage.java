@@ -1,6 +1,7 @@
 package visualcrossing.pageobjects;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
@@ -16,7 +17,8 @@ public class WeatherHistoryPage extends BasePage {
                 .shouldBe(visible);
     }
 
-    public WeatherHistoryPage assertWeatherHistoryByLocation(String location) {
+    @Step("Verify weather history details are displayed for location: {location}")
+    public WeatherHistoryPage verifyWeatherHistoryByLocationIsDisplayed(String location) {
         assertHeaderContainsLocationName(location);
         assertDateRangeHeaderContainsLocationName(location);
         assertWeatherHistoryTableIsVisibleByLocation();

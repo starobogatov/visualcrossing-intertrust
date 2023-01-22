@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'io.qameta.allure' version '2.11.0'
 }
 
 group 'com.test'
@@ -11,17 +12,42 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    implementation group: 'org.testng', name: 'testng', version: '7.1.0'
-    implementation group: 'com.codeborne', name: 'selenide', version: '6.11.1'
-    implementation group: 'com.codeborne', name: 'selenide-testng', version: '6.11.1'
+def versions = [
+        testNgVersion       : '7.1.0',
+        selenideVersion     : '6.11.1',
+        log4jVersion        : '2.19.0',
+        slf4jVersion        : '2.0.6',
+        allureVersion       : '2.20.1',
+        aspectJWeaverVersion: '1.9.19',
+        restAssuredVersion  : '5.3.0'
+]
 
-    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.19.0'
-    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.19.0'
-    implementation group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.19.0'
-    implementation group: 'org.slf4j', name: 'jul-to-slf4j', version: '2.0.6'
+dependencies {
+    implementation group: 'org.testng', name: 'testng', version: "${versions.testNgVersion}"
+    implementation group: 'com.codeborne', name: 'selenide', version: "${versions.selenideVersion}"
+    implementation group: 'com.codeborne', name: 'selenide-testng', version: "${versions.selenideVersion}"
+
+    // Allure reporting
+    implementation group: 'io.qameta.allure', name: 'allure-testng', version: "${versions.allureVersion}"
+    implementation group: 'io.qameta.allure', name: 'allure-selenide', version: "${versions.allureVersion}"
+    implementation group: 'org.aspectj', name: 'aspectjweaver', version: "${versions.aspectJWeaverVersion}"
+
+    // Log4j2 logging
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: "${versions.log4jVersion}"
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: "${versions.log4jVersion}"
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: "${versions.log4jVersion}"
+    implementation group: 'org.slf4j', name: 'jul-to-slf4j', version: "${versions.slf4jVersion}"
+
+    // API requests
+    implementation group: 'io.qameta.allure', name: 'allure-rest-assured', version: "${versions.allureVersion}"
+    implementation group: 'io.rest-assured', name: 'rest-assured', version: "${versions.restAssuredVersion}"
 }
 
 test {
     useTestNG()
+
+    testLogging {
+        events "PASSED", "FAILED", "SKIPPED"
+        exceptionFormat = 'full'
+    }
 }

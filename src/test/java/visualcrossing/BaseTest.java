@@ -1,6 +1,8 @@
 package visualcrossing;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.testng.annotations.BeforeClass;
 
 import java.util.Properties;
@@ -31,5 +33,8 @@ public class BaseTest {
         Configuration.browser = selenideBrowser;
         Configuration.browserSize = "1400x864";
         Configuration.pageLoadTimeout = parseLong(properties.getProperty("selenide.timeout"));
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
+                .screenshots(true)
+                .savePageSource(false));
     }
 }

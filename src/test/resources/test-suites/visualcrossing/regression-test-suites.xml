@@ -2,5 +2,6 @@
 <suite name="All test suites" verbose="2" annotations="JDK" configfailurepolicy="continue">
     <suite-files>
         <suite-file path="weather-history-test-suite.xml"/>
+        <suite-file path="api/weather-history-api.xml"/>
     </suite-files>
 </suite>

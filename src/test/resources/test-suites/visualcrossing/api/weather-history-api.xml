@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Weather history by loaction via API test suite" verbose="2"
+       annotations="JDK" parallel="tests" configfailurepolicy="continue" group-by-instances="true">
+    <test name="Weather API returns history successfully by location" enabled="true">
+        <classes>
+            <class name="visualcrossing.api.WeatherDataApiTest">
+                <methods>
+                    <include name="getWeatherDataByLocation"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
