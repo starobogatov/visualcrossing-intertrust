@@ -7,7 +7,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class WeatherDataTest extends BaseTest {
 
-    @Test(description = "Weather history successfully displayed on Visual Crossing page")
+    @Test(description = "Weather history by location successfully displayed on Visual Crossing page")
     public void viewWeatherData() {
         VisualCrossing
                 .openVisualCrossingMainPage()

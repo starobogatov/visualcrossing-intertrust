@@ -22,7 +22,7 @@ public class WeatherDataPage extends BasePage {
                 .shouldBe(visible);
     }
 
-    @Step("Search for the weather history for location: {location}")
+    @Step("Search for weather history by location: {location}")
     public WeatherHistoryPage enterLocationAndSearchForWeatherData(String location) {
         fieldEnterLocation.shouldBe(visible, enabled)
                 .setValue(location);

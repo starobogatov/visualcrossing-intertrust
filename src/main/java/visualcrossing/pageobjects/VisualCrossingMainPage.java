@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selenide.$;
 public class VisualCrossingMainPage extends BasePage {
     private static final SelenideElement
             headerWeather = $("h1 .text-nowrap"),
-            menuOptionWeatherData = $("[href='/weather-data']");
+            menuOptionWeatherData = $(".nav-item [href='/weather-data']");
 
     public static final String
             VISUAL_CROSSING_INFO_HEADER = "Weather Data & API";
