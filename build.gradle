@@ -12,7 +12,7 @@ repositories {
 
 def versions = [
         testNgVersion       : '7.1.0',
-        selenideVersion     : '6.11.1',
+        selenideVersion     : '6.12.4',
         log4jVersion        : '2.19.0',
         slf4jVersion        : '2.0.6',
         allureVersion       : '2.20.1',
@@ -30,11 +30,8 @@ dependencies {
     implementation group: 'io.qameta.allure', name: 'allure-selenide', version: "${versions.allureVersion}"
     implementation group: 'org.aspectj', name: 'aspectjweaver', version: "${versions.aspectJWeaverVersion}"
 
-    // Log4j2 logging
-    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: "${versions.log4jVersion}"
-    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: "${versions.log4jVersion}"
-    implementation group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: "${versions.log4jVersion}"
-    implementation group: 'org.slf4j', name: 'jul-to-slf4j', version: "${versions.slf4jVersion}"
+    //Logging
+    implementation 'ch.qos.logback:logback-classic:1.4.6'
 
     // API requests
     implementation group: 'io.qameta.allure', name: 'allure-rest-assured', version: "${versions.allureVersion}"
